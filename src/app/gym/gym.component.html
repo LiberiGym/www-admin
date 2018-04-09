@@ -1,0 +1,206 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="stepwizard">
+        <div class="stepwizard-row setup-panel">
+
+          <div class="stepwizard-step">
+            <a (click)="active_step = 1" class="colwh btn btn-info btn-circle" [ngClass]="{'btn-info':active_step === 1, 'btn-primary':active_step !== 1}">1</a>
+            <p>Registro</p>
+          </div>
+          <div class="stepwizard-step">
+            <a (click)="active_step = 2" class="colwh btn btn-primary btn-circle" [ngClass]="{'btn-info':active_step === 2, 'btn-primary':active_step !== 2}">2</a>
+            <p>Datos Fiscales</p>
+          </div>
+          <div class="stepwizard-step">
+            <a (click)="active_step = 3" class="colwh btn btn-primary btn-circle" [ngClass]="{'btn-info':active_step === 3, 'btn-primary':active_step !== 3}">3</a>
+            <p>Datos Bancarios</p>
+          </div>
+          <div class="stepwizard-step">
+            <a class="colwh btn btn-primary btn-circle" [ngClass]="{'btn-info':active_step === 4, 'btn-primary':active_step !== 4}">4</a>
+            <p>¡Listo!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="assets/img/registro_01_image.jpg" class="img-fluid">
+    </div>
+    <div class="col-sm-8">
+      <h2>Formulario de Registro</h2>
+      <p>Ingresa tus datos en el siguiente negocio para continuar con el registro</p>
+      <div id="step1container" *ngIf="active_step === 1">
+        <div class="row">
+        <div class="col-sm">
+          <h4>Datos de Encargado o Dueño</h4>
+          <div class="form-group">
+            <input [(ngModel)]="gym.commercial_name" placeholder="Nombre Comercial*" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.owner_name" placeholder="Nombre de Encargado o Dueño*" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.owner_phone" placeholder="Nombre Celular de Encargado" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.monthly_cost" placeholder="Costo de Mensualidad" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.attention_hours" placeholder="Horario de Atención" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.gym_phone" placeholder="Teléfono de Recepción" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.gym_email" placeholder="Correo de Gimnasio" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.gym_website" placeholder="Página Web" type="text" class="form-control">
+          </div>
+          <h4>Selecciona los días que opera</h4>
+          <input [(ngModel)]="gym.open_monday" type="checkbox" id="monday"><label for="monday" class="form-check-label"> Lunes</label>
+          <input [(ngModel)]="gym.open_tuesday" type="checkbox" id="tuesday"><label for="tuesday" class="form-check-label"> Martes</label>
+          <input [(ngModel)]="gym.open_thursday" type="checkbox" id="thursday"><label for="thursday" class="form-check-label"> Miércoles</label>
+          <input [(ngModel)]="gym.open_wednesday" type="checkbox" id="wednesday"><label for="wednesday" class="form-check-label"> Jueves</label>
+          <input [(ngModel)]="gym.open_friday" type="checkbox" id="friday"><label for="friday" class="form-check-label"> Viernes</label>
+          <input [(ngModel)]="gym.open_saturday" type="checkbox" id="saturday"><label for="saturday" class="form-check-label"> Sábado</label>
+          <input [(ngModel)]="gym.open_sunday" type="checkbox" id="sunday"><label for="sunday" class="form-check-label"> Domingo</label>
+
+
+        </div>
+        <div class="col-sm">
+          <h4>Datos de la Empresa</h4>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <input [(ngModel)]="gym.address_street" placeholder="Calle*" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <input [(ngModel)]="gym.address_neighborhood" placeholder="Colonia*" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-group">
+                <input [(ngModel)]="gym.address_number" placeholder="Número*" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <input [(ngModel)]="gym.address_zipcode" placeholder="C.P.*" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.address_city" placeholder="Ciudad*" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.address_state" placeholder="Estado*" type="text" class="form-control">
+          </div>
+          <h4>Selecciona los servicios que ofrece</h4>
+          <input [(ngModel)]="gym.service_weights" type="checkbox" id="monday"><label for="monday" class="form-check-label"> Pesas</label>
+          <input [(ngModel)]="gym.service_crossfit" type="checkbox" id="tuesday"><label for="tuesday" class="form-check-label"> Crossfit</label>
+          <input [(ngModel)]="gym.service_box" type="checkbox" id="thursday"><label for="thursday" class="form-check-label"> Boxeo</label>
+          <input [(ngModel)]="gym.service_aerobics" type="checkbox" id="wednesday"><label for="wednesday" class="form-check-label"> Aeróbics</label>
+          <input [(ngModel)]="gym.service_martial_arts" type="checkbox" id="friday"><label for="friday" class="form-check-label"> Artes Marciales</label>
+          <input [(ngModel)]="gym.service_other" type="checkbox" id="saturday"><label for="saturday" class="form-check-label"> Seleccionar Otros</label>
+
+          <h4>Subir imágenes de la empresa</h4>
+          <small>Máximo 10</small>
+          <input type="file" accept="image/*" (change)="changeListener($event, 'images')">
+          <div class="uploaded-img-container">
+            <img src="{{image}}" *ngFor="let image of gym.images" class="gym_image" />
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.images" placeholder="URL de Video" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div *ngIf="active_step === 2">
+        <div class="row">
+          <div class="col-sm">
+            <h3>Datos Fiscales</h3>
+            <div class="form-group">
+              <textarea [(ngModel)]="gym.invoice_name" placeholder="Breve descripción de tu negocio (Max 500 Caracteres)" class="form-control"></textarea>
+            </div>
+            <h4>Datos de propietario o representante legal</h4>
+            <div class="form-group">
+              <input [(ngModel)]="gym.invoice_email" placeholder="Nombre" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="gym.invoice_phone" placeholder="Correo Electrónico" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="gym.invoice_rfc" placeholder="Teléfono" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="gym.logo" placeholder="RFC" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            Logotipo de la empresa <button class="btn btn-primary btn-sm">Seleccionar Imagen</button>
+          </div>
+          <div class="col-sm-6">
+            Registro de marca <button class="btn btn-primary btn-sm">Seleccionar Imagen</button>
+          </div>
+        </div>
+        <input type="checkbox"> Por cuestiones de derechos de Propiedad Intelectual te concedemos una prórroga hasta el
+        31 de Junio de 2018 para cargar tu comprobante de registro de marca ante IMPI. En caso de exceder esta fecha,
+        concedes a LIBERI el derecho de sustituir el logotipo de tu imagen por una imagen genérica para evitar problemas
+        legales.
+      </div>
+
+      <div *ngIf="active_step === 3">
+        <div class="row">
+        <div class="col-sm">
+          <h3>Datos Bancarios</h3>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_name" placeholder="Nombre" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_last_name" placeholder="Apellidos" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_account_number" placeholder="Número de Cuenta" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_clabe" placeholder="CLABE Interbancaria" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_bank" placeholder="Banco" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.bank_country" placeholder="País" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="gym.accept_terms" type="checkbox" id="monday">
+            <label for="monday" class="form-check-label"> Acepto los Términos y Condiciones</label>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div *ngIf="active_step === 4">
+        <div class="row">
+          <div class="col-sm align-content-center text-center">
+            <h2>Registro Exitoso</h2>
+            <p>¡Ya eres parte de la mejor red de gimnasios, <b>LIBERI</b>!</p>
+            <img src="http://via.placeholder.com/200x200">
+            <p>Un representante de LIBERI te visitará en un lapso de 15 días hábiles para firmar tu contrato.</p>
+            <button class="btn btn-primary">Ir a mi Perfil</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-info float-right" (click)="nextStep()" *ngIf="active_step < last_step">Siguiente</button>
+      <button class="btn btn-default float-right" (click)="previousStep()" *ngIf="active_step > 1">Anterior</button>
+
+    </div>
+  </div>
+</div>
