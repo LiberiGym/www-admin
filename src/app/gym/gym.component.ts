@@ -42,14 +42,16 @@ export class GymComponent implements OnInit {
     invoice_email: 'eduardo@eduardo.com',
     invoice_phone: '8341687731',
     invoice_rfc: 'CUIH900419RC5',
-    logo: 'logo.png',
+    logo: null,
+    brand_register: null,
     bank_name: 'Eduardo',
     bank_last_name: 'Ibarra',
     bank_account_number: '12387685477',
     bank_clabe: '82736479623487352476852384762',
     bank_bank: 'BBVA Bancomer',
     bank_country: 'México',
-    accept_terms: true
+    accept_terms: true,
+    video_url: 'http://youtube.com/aonte83d'
   };
   constructor(private gymsService: GymsService) { }
 
@@ -83,6 +85,12 @@ export class GymComponent implements OnInit {
     myReader.onloadend = (e) => {
       if (source === 'images') {
         this.gym.images.push(myReader.result);
+      }
+      if (source === 'logo') {
+        this.gym.logo = myReader.result;
+      }
+      if (source === 'marca') {
+        this.gym.brand_register = myReader.result;
       }
       console.log(myReader.result);
     };

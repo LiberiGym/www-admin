@@ -114,7 +114,7 @@
             <img src="{{image}}" *ngFor="let image of gym.images" class="gym_image" />
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.images" placeholder="URL de Video" type="text" class="form-control">
+            <input [(ngModel)]="gym.video_url" placeholder="URL de Video" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -144,10 +144,10 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            Logotipo de la empresa <button class="btn btn-primary btn-sm">Seleccionar Imagen</button>
+            Logotipo de la empresa <input type="file" accept="image/*" (change)="changeListener($event, 'logo')">
           </div>
           <div class="col-sm-6">
-            Registro de marca <button class="btn btn-primary btn-sm">Seleccionar Imagen</button>
+            Registro de marca <input type="file" accept="image/*" (change)="changeListener($event, 'marca')">
           </div>
         </div>
         <input type="checkbox"> Por cuestiones de derechos de Propiedad Intelectual te concedemos una prórroga hasta el
@@ -198,6 +198,7 @@
         </div>
       </div>
 
+      <button class="btn btn-info float-right" (click)="saveGym()">Guardar</button>
       <button class="btn btn-info float-right" (click)="nextStep()" *ngIf="active_step < last_step">Siguiente</button>
       <button class="btn btn-default float-right" (click)="previousStep()" *ngIf="active_step > 1">Anterior</button>
 
