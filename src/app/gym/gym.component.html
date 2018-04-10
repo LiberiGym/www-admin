@@ -45,16 +45,16 @@
             <input [(ngModel)]="gym.owner_name" placeholder="Nombre de Encargado o Dueño*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.owner_phone" placeholder="Nombre Celular de Encargado" type="text" class="form-control">
+            <input [(ngModel)]="gym.owner_phone" placeholder="Nombre Celular de Encargado*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.monthly_cost" placeholder="Costo de Mensualidad" type="text" class="form-control">
+            <input [(ngModel)]="gym.monthly_cost" placeholder="Costo de Mensualidad*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.attention_hours" placeholder="Horario de Atención" type="text" class="form-control">
+            <input [(ngModel)]="gym.attention_hours" placeholder="Horario de Atención*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.gym_phone" placeholder="Teléfono de Recepción" type="text" class="form-control">
+            <input [(ngModel)]="gym.gym_phone" placeholder="Teléfono de Recepción*" type="text" class="form-control">
           </div>
           <div class="form-group">
             <input [(ngModel)]="gym.gym_email" placeholder="Correo de Gimnasio" type="text" class="form-control">
@@ -125,20 +125,20 @@
           <div class="col-sm">
             <h3>Datos Fiscales</h3>
             <div class="form-group">
-              <textarea [(ngModel)]="gym.invoice_name" placeholder="Breve descripción de tu negocio (Max 500 Caracteres)" class="form-control"></textarea>
+              <textarea [(ngModel)]="gym.description" placeholder="Breve descripción de tu negocio (Max 500 Caracteres)" class="form-control"></textarea>
             </div>
             <h4>Datos de propietario o representante legal</h4>
             <div class="form-group">
-              <input [(ngModel)]="gym.invoice_email" placeholder="Nombre" type="text" class="form-control">
+              <input [(ngModel)]="gym.invoice_name" placeholder="Nombre*" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <input [(ngModel)]="gym.invoice_phone" placeholder="Correo Electrónico" type="text" class="form-control">
+              <input [(ngModel)]="gym.invoice_email" placeholder="Correo Electrónico*" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <input [(ngModel)]="gym.invoice_rfc" placeholder="Teléfono" type="text" class="form-control">
+              <input [(ngModel)]="gym.invoice_phone" placeholder="Teléfono" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <input [(ngModel)]="gym.logo" placeholder="RFC" type="text" class="form-control">
+              <input [(ngModel)]="gym.invoice_rfc" placeholder="RFC*" type="text" class="form-control">
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@
             Logotipo de la empresa <input type="file" accept="image/*" (change)="changeListener($event, 'logo')">
           </div>
           <div class="col-sm-6">
-            Registro de marca <input type="file" accept="image/*" (change)="changeListener($event, 'marca')">
+            Registro de marca <input type="file" accept="image/*, application/pdf" (change)="changeListener($event, 'marca')">
           </div>
         </div>
         <input type="checkbox"> Por cuestiones de derechos de Propiedad Intelectual te concedemos una prórroga hasta el
@@ -161,22 +161,22 @@
         <div class="col-sm">
           <h3>Datos Bancarios</h3>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_name" placeholder="Nombre" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_name" placeholder="Nombre*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_last_name" placeholder="Apellidos" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_last_name" placeholder="Apellidos*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_account_number" placeholder="Número de Cuenta" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_account_number" placeholder="Número de Cuenta*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_clabe" placeholder="CLABE Interbancaria" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_clabe" placeholder="CLABE Interbancaria*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_bank" placeholder="Banco" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_bank" placeholder="Banco*" type="text" class="form-control">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="gym.bank_country" placeholder="País" type="text" class="form-control">
+            <input [(ngModel)]="gym.bank_country" placeholder="País*" type="text" class="form-control">
           </div>
           <div class="form-group">
             <input [(ngModel)]="gym.accept_terms" type="checkbox" id="monday">
@@ -198,9 +198,9 @@
         </div>
       </div>
 
-      <button class="btn btn-info float-right" (click)="saveGym()">Guardar</button>
-      <button class="btn btn-info float-right" (click)="nextStep()" *ngIf="active_step < last_step">Siguiente</button>
-      <button class="btn btn-default float-right" (click)="previousStep()" *ngIf="active_step > 1">Anterior</button>
+      <button class="btn btn-primary margin-left float-right" (click)="saveGym()" *ngIf="active_step == last_step-1 || id !== 'new'">Guardar</button>
+      <button class="btn btn-info margin-left float-right" (click)="nextStep()" *ngIf="active_step < last_step && active_step != last_step-1">Siguiente</button>
+      <button class="btn btn-default margin-left float-right" (click)="previousStep()" *ngIf="active_step > 1">Anterior</button>
 
     </div>
   </div>

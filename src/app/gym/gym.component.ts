@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GymsService} from '../../services/gym.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-gym',
@@ -10,6 +11,50 @@ export class GymComponent implements OnInit {
   active_step = 1;
   last_step = 4;
   gym: any = {
+    commercial_name: null,
+    owner_name: null,
+    owner_phone: null,
+    monthly_cost: null,
+    attention_hours: null,
+    gym_phone: null,
+    gym_email: null,
+    gym_website: null,
+    open_monday: null,
+    open_tuesday: null,
+    open_thursday: null,
+    open_wednesday: null,
+    open_friday: null,
+    open_saturday: null,
+    open_sunday: null,
+    address_street: null,
+    address_neighborhood: null,
+    address_number: null,
+    address_zipcode: null,
+    address_city: null,
+    address_state: null,
+    service_weights: null,
+    service_crossfit: null,
+    service_box: null,
+    service_aerobics: null,
+    service_martial_arts: null,
+    service_other: null,
+    images: [],
+    invoice_name: null,
+    invoice_email: null,
+    invoice_phone: null,
+    invoice_rfc: null,
+    logo: null,
+    brand_register: null,
+    bank_name: null,
+    bank_last_name: null,
+    bank_account_number: null,
+    bank_clabe: null,
+    bank_bank: null,
+    bank_country: null,
+    accept_terms: null,
+    video_url: null
+  };
+  /*gym: any = {
     commercial_name: 'Olympia Gym',
     owner_name: 'Eduardo Ibarra',
     owner_phone: '8341687731',
@@ -52,10 +97,18 @@ export class GymComponent implements OnInit {
     bank_country: 'México',
     accept_terms: true,
     video_url: 'http://youtube.com/aonte83d'
-  };
-  constructor(private gymsService: GymsService) { }
+  };*/
+  id: any = null;
+  constructor(private gymsService: GymsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id !== 'new') {
+      this.gymsService.getGym(this.id).valueChanges()
+        .subscribe((result) => {
+          this.gym = result;
+        });
+    }
   }
   nextStep() {
     if (this.active_step < this.last_step) {
@@ -68,11 +121,38 @@ export class GymComponent implements OnInit {
     }
   }
   saveGym() {
+    if (
+      !this.gym.commercial_name ||
+      !this.gym.owner_name ||
+      !this.gym.owner_phone ||
+      !this.gym.monthly_cost ||
+      !this.gym.attention_hours ||
+      !this.gym.gym_phone ||
+      !this.gym.address_street ||
+      !this.gym.address_neighborhood ||
+      !this.gym.address_number ||
+      !this.gym.address_zipcode ||
+      !this.gym.address_city ||
+      !this.gym.address_state ||
+      !this.gym.invoice_name ||
+      !this.gym.invoice_email ||
+      !this.gym.invoice_rfc ||
+      !this.gym.bank_name ||
+      !this.gym.bank_last_name ||
+      !this.gym.bank_account_number ||
+      !this.gym.bank_clabe ||
+      !this.gym.bank_bank ||
+      !this.gym.bank_country ||
+      !this.gym.accept_terms
+    ) {
+      alert('Todos los campos marcados con asterisco (*) son requeridos');
+      return;
+    }
     if (!this.gym.id) {
       this.gym.id = Date.now();
     }
     this.gymsService.createGym(this.gym).then((result) => {
-      console.log(result);
+      this.active_step = this.last_step;
     });
   }
   changeListener($event, source): void {

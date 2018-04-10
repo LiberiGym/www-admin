@@ -20,6 +20,9 @@ body{
 .margin-right {
   margin-right: 15px;
 }
+.margin-left {
+  margin-left: 15px;
+}
 .stepwizard-step p {
   margin-top: 10px;
 }
@@ -70,4 +73,7 @@ body{
 }
 .colwh {
   color: white !important;
+}
+.marto45{
+  margin-top: 45px;
 }

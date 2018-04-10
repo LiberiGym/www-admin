@@ -14,10 +14,12 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import {GymsService} from '../services/gym.service';
+import { GymsComponent } from './gyms/gyms.component';
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'gyms', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'gym', component: GymComponent}
+  {path: 'gyms', component: GymsComponent},
+  {path: 'gym/:id', component: GymComponent}
 ];
 export const firebaseConfig = {
   apiKey: 'AIzaSyAarsMkjVN4nTldjdmNzm2CsOVX5N1sV-A',
@@ -31,7 +33,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    GymComponent
+    GymComponent,
+    GymsComponent
   ],
   imports: [
     BrowserModule,

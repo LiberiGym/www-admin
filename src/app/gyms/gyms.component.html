@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row marto45">
+    <h2>Gimnasios Registrados</h2>
+    <div>
+      <a class="btn btn-info btn-sm margin-left" routerLink="/gym/new">Agregar Nuevo +</a>
+    </div>
+    <hr />
+    <table class="table table-bordered table-hover table-striped table-">
+      <tr>
+        <th>Alta</th>
+        <th>Negocio</th>
+        <th>Encargado</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let gym of gyms">
+        <td>{{gym.id | date}}</td>
+        <td>{{gym.commercial_name}}</td>
+        <td>{{gym.owner_name}}</td>
+        <td>{{gym.gym_phone}}</td>
+        <td>{{gym.gym_email}}</td>
+        <td><a class="btn btn-primary" routerLink="/gym/{{gym.id}}" >Ver</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
